@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listagem de Usuário</title>
+
+    <!-- Link de referência do CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <!-- Cabeçalho do website -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-danger">
+            <div class="container-fluid">
+              <a class="navbar-brand text-uppercase fw-bold" href="/">Projeto - Flask</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/listar-usuarios">Listagem de Usuário</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout">Sair</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Estrutura principal do website -->
+    <main class="container mt-5">
+      <section class="row justify-content-center">
+        <div class="col-10">
+
+            <div class="card">
+              <div class="card-header bg-danger">
+                <h4 class="card-title text-uppercase">Listagem de Usuários</h4>
+              </div>
+              <div class="card-body">
+
+                <!-- Apresenta as mensagens do back-end -->
+                <div class="m-2 text-center">
+                  {% set aviso = get_flashed_messages() %}
+                  {% if (aviso) %}
+                    {{aviso[0]}}
+                  {% endif %}
+                </div>
+
+                <!-- Tabela com as informações do usuário -->
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>CPF</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                      <td>{{ usuario.nome }}</td>
+                      <td>{{ usuario.cpf }}</td>
+                      <td>
+                        <a class="btn btn-warning" href="{{ url_for('exibir_usuario', cpf=usuario.cpf) }}">Editar</a>
+                        <a class="btn btn-danger" href="{{ url_for('excluir_usuario', cpf=usuario.cpf) }}">Excluir</a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Link de referência do Java Script do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

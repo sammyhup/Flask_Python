@@ -1,0 +1,23 @@
+[
+    {
+        "nome": "Administrador",
+        "nascimento": "0000-00-00",
+        "cpf": "000.000.000-00",
+        "email": "administrador@email.com.br",
+        "senha": "123456"
+    },
+    {
+        "nome": "Marcus Vin\u00edcius Contes Cal\u00e7a",
+        "nascimento": "1996-02-11",
+        "cpf": "500.400.300-20",
+        "email": "mcontes@outlook.com",
+        "senha": "123456"
+    },
+    {
+        "nome": "Lucas de Souza",
+        "nascimento": "1990-10-10",
+        "cpf": "900.800.700-60",
+        "email": "lucas@gmail.com",
+        "senha": "123456"
+    }
+]
